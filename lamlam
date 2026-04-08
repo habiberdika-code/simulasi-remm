@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Simulasi Lampu Rem Motor</title>
+<style>
+    body {
+        font-family: Arial;
+        text-align: center;
+        background: #eef2f3;
+    }
+    h2 {
+        margin-top: 20px;
+    }
+    .diagram {
+        margin-top: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+    }
+    .komponen {
+        padding: 15px;
+        border-radius: 10px;
+        background: white;
+        box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    }
+    .kabel {
+        width: 50px;
+        height: 5px;
+        background: gray;
+    }
+    .aktif {
+        background: orange !important;
+    }
+    .lampu {
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        background: gray;
+        margin: auto;
+    }
+    .nyala {
+        background: red;
+        box-shadow: 0 0 20px red;
+    }
+    button {
+        margin-top: 30px;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+</style>
+</head>
+<body>
+
+<h2>Simulasi Sistem Lampu Rem Sepeda Motor</h2>
+
+<div class="diagram">
+
+    <div class="komponen">
+        🔋<br>Aki
+    </div>
+
+    <div id="kabel1" class="kabel"></div>
+
+    <div id="saklar" class="komponen">
+        🔘<br>Saklar Rem
+    </div>
+
+    <div id="kabel2" class="kabel"></div>
+
+    <div class="komponen">
+        💡<br>
+        <div id="lampu" class="lampu"></div>
+        Lampu Rem
+    </div>
+
+</div>
+
+<button onclick="tekanRem()">Tekan Rem</button>
+<button onclick="lepasRem()">Lepas Rem</button>
+
+<p id="status">Status: Sistem Mati</p>
+
+<script>
+function tekanRem() {
+    document.getElementById("lampu").classList.add("nyala");
+    document.getElementById("kabel1").classList.add("aktif");
+    document.getElementById("kabel2").classList.add("aktif");
+    document.getElementById("saklar").style.background = "lightgreen";
+    document.getElementById("status").innerHTML = "Arus mengalir: Aki → Saklar → Lampu (MENYALA)";
+}
+
+function lepasRem() {
+    document.getElementById("lampu").classList.remove("nyala");
+    document.getElementById("kabel1").classList.remove("aktif");
+    document.getElementById("kabel2").classList.remove("aktif");
+    document.getElementById("saklar").style.background = "white";
+    document.getElementById("status").innerHTML = "Arus terputus: Lampu MATI";
+}
+</script>
+
+</body>
+</html>
